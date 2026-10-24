@@ -1,7 +1,11 @@
+package tests;
+
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.logevents.SelenideLogger;
 import drivers.BrowserstackDriver;
+import helpers.Browserstack;
+import io.qameta.allure.Allure;
 import io.qameta.allure.selenide.AllureSelenide;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeAll;
@@ -22,19 +26,28 @@ public class TestBase {
 
     @BeforeEach
     public void initTestData()  {
-        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()
-                .screenshots(false)      // отключаем скриншоты в Allure
-                .savePageSource(false)   // отключаем сохранение page source
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide()// отключаем сохранение page source
         );
         open();
     }
 
 
+//    @AfterEach
+//    void addAttachments() {
+//        if (!Selenide.webdriver().driver().hasWebDriverStarted()) {
+//
+//            String sessionId = Selenide.sessionId().toString();
+//            System.out.println(sessionId);
+// 5d21b4d41f35c80be39b175a0ea072d363bf1ac5
+
     @AfterEach
     void addAttachments() {
-        if (!Selenide.webdriver().driver().hasWebDriverStarted()) {
-            return;
+        if (Selenide.webdriver().driver().hasWebDriverStarted()) {
+            String sessionId = Selenide.sessionId().toString();
+            System.out.println(sessionId);
+            // Получить URL видео и прикрепить к Allure
+            String videoUrl = Browserstack.videoUrl(sessionId);
+            Allure.addAttachment("Video", "text/plain", videoUrl);
         }
-
     }
 }
