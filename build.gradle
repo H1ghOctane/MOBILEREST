@@ -17,6 +17,8 @@ def aspectjWeaverVersion = "1.9.25",
     appiumVersion = "8.3.0",
     ownerVersion = "1.0.12"
 
+
+
 allure {
     version.set(allureReportVersion)
     adapter {
@@ -44,6 +46,10 @@ dependencies {
 }
 
 tasks.withType(Test) {
+
+    tasks.withType(JavaCompile).configureEach {
+        options.encoding = 'UTF-8'
+    }
     useJUnitPlatform()
     systemProperties(System.getProperties())
 
