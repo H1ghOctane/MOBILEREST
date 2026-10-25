@@ -4,11 +4,16 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+# Allure
+allure-results/
+allure-report/
+
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
 .idea/compiler.xml
 .idea/libraries/
+.idea/
 *.iws
 *.iml
 *.ipr
@@ -25,8 +30,18 @@ out/
 .springBeans
 .sts4-cache
 bin/
-!**/src/main/**/bin/
+**/src/main/**/bin/
 !**/src/test/**/bin/
+
+src/main/java/org/example/
+
+chromedriver.log
+.chromedriver.log
+*.log
+
+**/src/test/resources/browserstack.properties
+**/src/test/resources/browserstack_answer.json
+
 
 ### NetBeans ###
 /nbproject/private/
