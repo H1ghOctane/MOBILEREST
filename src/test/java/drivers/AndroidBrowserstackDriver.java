@@ -1,5 +1,5 @@
-
 package drivers;
+
 import com.codeborne.selenide.WebDriverProvider;
 import org.jspecify.annotations.NonNull;
 import org.openqa.selenium.Capabilities;
@@ -12,7 +12,7 @@ import java.util.HashMap;
 import java.util.Map;
 import static config.ConfigManager.BS_CONFIG;
 
-public class BrowserstackDriver implements WebDriverProvider {
+public class AndroidBrowserstackDriver implements WebDriverProvider {
 
     @Override
     public WebDriver createDriver(@NonNull Capabilities capabilities) {
@@ -30,7 +30,7 @@ public class BrowserstackDriver implements WebDriverProvider {
         caps.setCapability("appium:deviceName", BS_CONFIG.deviceName());
         caps.setCapability("appium:platformVersion", BS_CONFIG.osVersion());
         caps.setCapability("appium:app", BS_CONFIG.appUrl());
-
+        System.out.println("ANDROID DRIVER STARTED");
         try {
             return new RemoteWebDriver(
                     new URL("https://hub.browserstack.com/wd/hub"), caps);

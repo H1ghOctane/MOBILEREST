@@ -11,33 +11,41 @@ import java.util.Base64;
 
 public class Screenshot {
 
-    public void attachScreenshot() {
+    private Screenshot() {
+    }
+
+    public static void attachScreenshot() {
+
         try {
+
             WebDriver driver = WebDriverRunner.getWebDriver();
+
             String rawBase64 = ((TakesScreenshot) driver).getScreenshotAs(OutputType.BASE64);
 
-            // 1. Убираем префикс data:image/png;base64, если он есть
-            if (rawBase64.contains(",")) {
-                rawBase64 = rawBase64.substring(rawBase64.indexOf(",") + 1);
+            if (rawBase64 == null || rawBase64.isBlank()) {
+                return;
             }
 
-            // 2. Убираем все пробелы и переносы строк (это критично!)
+            if (rawBase64.contains(",")) {rawBase64 =
+                        rawBase64.substring(rawBase64.indexOf(",") + 1
+                        );
+            }
+
             rawBase64 = rawBase64.replaceAll("\\s", "");
 
-            // 3. Декодируем в байты
             byte[] screenshotBytes = Base64.getDecoder().decode(rawBase64);
 
-            // 4. Прикрепляем как файл в Allure
-            Allure.addAttachment(
-                    "Screenshot",
-                    "image/png",
-                    new ByteArrayInputStream(screenshotBytes),
-                    ".png"
+            Allure.addAttachment("Screenshot", "image/png",
+                    new ByteArrayInputStream(screenshotBytes), ".png"
             );
-            System.out.println("Screenshot attached! Size: " + screenshotBytes.length + " bytes");
+
+            System.out.println("Screenshot attached! Size: " + screenshotBytes.length + " bytes"
+            );
 
         } catch (Exception e) {
-            System.out.println("Screenshot error: " + e.getMessage());
+
+            System.out.println("Screenshot error: " + e.getMessage()
+            );
         }
     }
 }

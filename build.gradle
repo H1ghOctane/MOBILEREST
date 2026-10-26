@@ -7,15 +7,14 @@ repositories {
     mavenCentral()
 }
 
-def aspectjWeaverVersion = "1.9.25",
-    selenideVersion = "6.13.0",
-    restAssuredVersion = "6.2.0",
-    allureAdaptersVersion = "2.35.5",
-    allureReportVersion = "2.46.1",
-    junitVersion = "5.14.4",
-    slf4jVersion = "2.0.20",
-    appiumVersion = "8.3.0",
-    ownerVersion = "1.0.12"
+def aspectjWeaverVersion = "1.9.25"
+def restAssuredVersion = "5.5.6"
+def allureAdaptersVersion = "2.35.5"
+def allureReportVersion = "2.46.1"
+def junitVersion = "5.13.4"
+def slf4jVersion = "2.0.20"
+def appiumVersion = "9.5.0"
+def ownerVersion = "1.0.12"
 
 
 
@@ -31,12 +30,10 @@ allure {
 dependencies {
     testImplementation(
             "org.aspectj:aspectjweaver:$aspectjWeaverVersion",
-            "com.codeborne:selenide:$selenideVersion",
+            "com.codeborne:selenide:7.18.1",
+            "com.codeborne:selenide-appium:7.18.1",
             "io.qameta.allure:allure-selenide:$allureAdaptersVersion",
             "io.appium:java-client:$appiumVersion",
-            "com.codeborne:selenide:7.18.1",
-
-            "com.codeborne:selenide-appium:7.18.1",
             "io.rest-assured:rest-assured:$restAssuredVersion",
             "org.junit.jupiter:junit-jupiter:$junitVersion",
             "org.aeonbits.owner:owner:$ownerVersion",
@@ -47,15 +44,28 @@ dependencies {
 
 tasks.withType(Test) {
 
-    tasks.withType(JavaCompile).configureEach {
-        options.encoding = 'UTF-8'
-    }
     useJUnitPlatform()
+
+    def platform = System.getProperty("platform")
+
+    if (platform == "android") {
+        useJUnitPlatform {
+            includeTags("android")
+        }
+    }
+
+    if (platform == "ios") {
+        useJUnitPlatform {
+            includeTags("ios")
+        }
+    }
+
     systemProperties(System.getProperties())
 
     testLogging {
         lifecycle {
-            events "started", "skipped", "failed", "standard_error", "standard_out"
+            events "started", "skipped", "failed",
+                    "standard_error", "standard_out"
             exceptionFormat = "short"
         }
     }

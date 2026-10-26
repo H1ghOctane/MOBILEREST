@@ -25,10 +25,9 @@ public interface BrowserstackConfig extends Config {
     @Key("ios.deviceName")
     String iosDeviceName();
 
-    @Key("ios.Version")
+    @Key("ios.version")
     String iosVersion();
 
     @Key("ios.appUrl")
     String iosAppUrl();
-
 }
