@@ -19,35 +19,25 @@ public class TestBase {
         Configuration.pageLoadTimeout = -1;
         Configuration.screenshots = false;
         Configuration.savePageSource = false;
+
     }
 
     @BeforeEach
     void beforeEach() {
 
-        SelenideLogger.addListener(
-                "AllureSelenide",
-                new AllureSelenide()
-        );
+        SelenideLogger.addListener("AllureSelenide", new AllureSelenide());
+
     }
 
     @AfterEach
     void addAttachments() {
 
-        if (!Selenide.webdriver()
-                .driver()
-                .hasWebDriverStarted()) {
+        if (!Selenide.webdriver().driver().hasWebDriverStarted()) {
             return;
         }
-
-        String sessionId =
-                Selenide.sessionId().toString();
-
+        String sessionId = Selenide.sessionId().toString();
         AllureAttachments.attachScreenshot();
-
-        boolean safariTest =
-                getClass().getSimpleName()
-                        .contains("Safari");
-
+        boolean safariTest = getClass().getSimpleName().contains("Safari");
         Selenide.closeWebDriver();
 
         if (!safariTest) {

@@ -42,7 +42,6 @@ chromedriver.log
 **/src/test/resources/browserstack.properties
 **/src/test/resources/browserstack_answer.json
 
-
 ### NetBeans ###
 /nbproject/private/
 /nbbuild/

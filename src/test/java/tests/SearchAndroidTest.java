@@ -23,38 +23,23 @@ public class SearchAndroidTest extends TestBase {
 
         Configuration.browser =
                 AndroidBrowserstackDriver.class.getName();
-
         open();
+
     }
 
     @Test
     void successfulSearchTest() {
 
         step("Открыть поиск и ввести запрос", () -> {
-
-            $(AppiumBy.accessibilityId("Search Wikipedia"))
-                    .click(tap());
-
-            $(id("org.wikipedia.alpha:id/search_src_text"))
-                    .sendKeys("Dinosaur");
-        });
-
+            $(AppiumBy.accessibilityId("Search Wikipedia")).click(tap());
+            $(id("org.wikipedia.alpha:id/search_src_text")).sendKeys("Dinosaur");});
         step("Проверить, что результаты поиска найдены", () ->
-
                 $$(className("android.widget.TextView"))
-                        .shouldHave(sizeGreaterThan(0))
-        );
-
+                        .shouldHave(sizeGreaterThan(0)));
         step("Открыть статью про динозавров", () ->
-
                 $(id("org.wikipedia.alpha:id/page_list_item_title"))
-                        .click(tap())
-        );
-
+                        .click(tap()));
         step("Проверить, что статья открылась", () ->
-
-                $(id("org.wikipedia.alpha:id/view_page_title_text"))
-                        .shouldBe(visible)
-        );
+                $(id("org.wikipedia.alpha:id/view_page_title_text")).shouldBe(visible));
     }
 }

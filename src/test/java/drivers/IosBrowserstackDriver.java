@@ -21,97 +21,32 @@ public class IosBrowserstackDriver
     public WebDriver createDriver(
             @NonNull Capabilities capabilities) {
 
-        MutableCapabilities caps =
-                new MutableCapabilities();
+        MutableCapabilities caps = new MutableCapabilities();
+        Map<String, Object> bstackOptions = new HashMap<>();
 
-        Map<String, Object> bstackOptions =
-                new HashMap<>();
+        bstackOptions.put("userName", BS_CONFIG.username());
+        bstackOptions.put("accessKey", BS_CONFIG.accessKey());
+        bstackOptions.put("projectName", "Wikipedia Mobile Tests");
+        bstackOptions.put("buildName", "ios-build");
+        bstackOptions.put("sessionName", "ios-test");
+        bstackOptions.put("debug", true);
+        bstackOptions.put("networkLogs", true);
 
-        bstackOptions.put(
-                "userName",
-                BS_CONFIG.username()
-        );
+        caps.setCapability("bstack:options", bstackOptions);
+        caps.setCapability("platformName", "ios");
+        caps.setCapability("appium:deviceName", BS_CONFIG.iosDeviceName());
+        caps.setCapability("appium:platformVersion", BS_CONFIG.iosVersion());
+        caps.setCapability("appium:app", BS_CONFIG.iosAppUrl());
 
-        bstackOptions.put(
-                "accessKey",
-                BS_CONFIG.accessKey()
-        );
-
-        bstackOptions.put(
-                "projectName",
-                "Wikipedia Mobile Tests"
-        );
-
-        bstackOptions.put(
-                "buildName",
-                "ios-build"
-        );
-
-        bstackOptions.put(
-                "sessionName",
-                "ios-test"
-        );
-
-        bstackOptions.put(
-                "debug",
-                true
-        );
-
-        bstackOptions.put(
-                "networkLogs",
-                true
-        );
-
-        caps.setCapability(
-                "bstack:options",
-                bstackOptions
-        );
-
-        caps.setCapability(
-                "platformName",
-                "ios"
-        );
-
-        caps.setCapability(
-                "appium:deviceName",
-                BS_CONFIG.iosDeviceName()
-        );
-
-        caps.setCapability(
-                "appium:platformVersion",
-                BS_CONFIG.iosVersion()
-        );
-
-        caps.setCapability(
-                "appium:app",
-                BS_CONFIG.iosAppUrl()
-        );
-
-        System.out.println(
-                "====== IOS CAPABILITIES ======"
-        );
-
-        System.out.println(
-                "Device: "
-                        + BS_CONFIG.iosDeviceName()
-        );
-
-        System.out.println(
-                "Version: "
-                        + BS_CONFIG.iosVersion()
-        );
+        System.out.println("====== IOS CAPABILITIES ======");
+        System.out.println("Device: " + BS_CONFIG.iosDeviceName());
+        System.out.println("Version: " + BS_CONFIG.iosVersion());
         System.out.println("IOS DRIVER STARTED");
+
         try {
-
             return new RemoteWebDriver(
-                    new URL(
-                            "https://hub.browserstack.com/wd/hub"
-                    ),
-                    caps
-            );
-
+                    new URL("https://hub.browserstack.com/wd/hub"), caps);
         } catch (MalformedURLException e) {
-
             throw new RuntimeException(e);
         }
     }

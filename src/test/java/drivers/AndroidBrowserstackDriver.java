@@ -6,10 +6,12 @@ import org.openqa.selenium.Capabilities;
 import org.openqa.selenium.MutableCapabilities;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.remote.RemoteWebDriver;
+
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.HashMap;
 import java.util.Map;
+
 import static config.ConfigManager.BS_CONFIG;
 
 public class AndroidBrowserstackDriver implements WebDriverProvider {
