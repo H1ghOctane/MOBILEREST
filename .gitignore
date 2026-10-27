@@ -8,7 +8,6 @@ build/
 allure-results/
 allure-report/
 
-src/test/resources/
 
 ### IntelliJ IDEA ###
 .idea/modules.xml
@@ -41,8 +40,7 @@ chromedriver.log
 .chromedriver.log
 *.log
 
-**/src/test/resources/browserstack.properties
-**/src/test/resources/browserstack_answer.json
+
 
 ### NetBeans ###
 /nbproject/private/
