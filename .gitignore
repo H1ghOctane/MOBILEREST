@@ -8,6 +8,8 @@ build/
 allure-results/
 allure-report/
 
+src/test/resources/
+
 ### IntelliJ IDEA ###
 .idea/modules.xml
 .idea/jarRepositories.xml
