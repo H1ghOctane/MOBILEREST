@@ -1,7 +1,5 @@
- Mobile Tests (Wikipedia)
-<p align="center">
-  <img src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80" alt="Mobile Testing" width="100%" style="border-radius: 10px;"/>
-</p>
+📱 Mobile Tests (Wikipedia)
+
 Репозиторий содержит тесты для мобильного приложения Wikipedia. Проект вынесен отдельно от [основного репозитория Aviasales](https://github.com/H1ghOctane/AVIASALESDEGREE), так как использует другой стек (Appium) и тестирует стороннее приложение для демонстрации навыков мобильной автоматизации.
 
 ✅ Стек
