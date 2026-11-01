@@ -31,3 +31,8 @@ https://jenkins.qa.guru/job/MOBILE_H1GHT0CTANE/3/allure/
   <source src="https://github.com/H1ghOctane/MOBILEREST/issues/2" type="video/mp4">
 </video>
 
+<video src="https://github.com/user-attachments/assets/MOBILEREST/issues/2" controls="controls" width="100%"></video>
+
+<video src="https://github.com/user-attachments/assets/H1ghOctane/MOBILEREST/issues/2" controls="controls" width="100%"></video>
+
+[![Посмотреть видео работы теста](https://img.shields.io/badge/▶_Смотреть_видео-Android-green?style=for-the-badge&logo=android)](https://github.com/H1ghOctane/MOBILEREST/issues/2)
