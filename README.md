@@ -21,13 +21,10 @@
 - Android (тег `@Tag("android")`)
 - iOS (тег `@Tag("ios")`)
 
-📁 Структура
-```text
-src/test/java
-├── mobile
-│   ├── config      // BrowserstackConfig, ConfigManager
-│   ├── drivers     // AndroidBrowserstackDriver, IosBrowserstackDriver
-│   ├── helpers     // AllureAttachments, Browserstack, Screenshot
-│   └── tests       // SearchAndroidTest, SearchIphoneTest
-└── resources
-    └── config      // browserstack.properties
+📸 Визуализация тестов
+
+https://jenkins.qa.guru/job/MOBILE_H1GHT0CTANE/3/allure/
+![Jenkins Build Success]()
+![Android "SearchIphoneTest" test](videos/android-video.mp4)
+
+
