@@ -26,5 +26,7 @@
 https://jenkins.qa.guru/job/MOBILE_H1GHT0CTANE/3/allure/
 ![Jenkins Build Success]()
 ![Android "SearchIphoneTest" test]
-<video src="https://github.com/user-attachments/assets/https://github.com/H1ghOctane/MOBILEREST/issues/2" controls width="100%"></video>
+<video controls width="100%">
+  <source src="[ВАША_ССЫЛКА](https://github.com/H1ghOctane/MOBILEREST/issues/2)" type="video/mp4">
+</video>
 
